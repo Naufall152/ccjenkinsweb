@@ -35,12 +35,11 @@ Route::get('/donasi', [DonationController::class, 'index'])->name('donasi');
 Route::post('/donasi/submit', [DonationController::class, 'submit'])->name('donasi.submit');
 
 Route::get('/donasi/makanan', function () {
-    return view('donasi.makanan'); // Pastikan ada file Blade bernama makanan.blade.php
+    return view('donasi.makanan');
 })->name('donasi.makanan');
 
-// Route untuk halaman Donasi Tunai
 Route::get('/donasi/tunai', function () {
-    return view('donasi.tunai'); // Pastikan ada file Blade bernama tunai.blade.php
+    return view('donasi.tunai');
 })->name('donasi.tunai');
 
 Route::post('/donasi-tunai', [DonasiTunaiController::class, 'store'])->name('donasi.tunai.store');

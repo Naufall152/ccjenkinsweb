@@ -38,7 +38,7 @@
                                     <td>{{ $donasi->pesan }}</td>
                                     <td>Rp {{ number_format($donasi->jumlah_donasi, 0, ',', '.') }}</td>
                                     <td>{{ $donasi->opsi_pembayaran }}</td>
-                                    <td>{{ $donasi->created_at->format('d-m-Y H:i') }}</td>
+                                    <td>{{ $donasi->created_at->timezone('Asia/Jakarta')->format('d-m-Y H:i') }}</td>
                                     <td>
                                         <form action="{{ route('donasi.tunai.destroy', $donasi->id) }}" method="POST"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
@@ -56,9 +56,6 @@
                                             <i class="fas fa-eye"></i> Lihat
                                         </a>
                                     </td>
-
-
-
                                 </tr>
                             @empty
                                 <tr>
@@ -98,7 +95,7 @@
                                     <td>{{ $donasi->jenis_makanan }}</td>
                                     <td>{{ $donasi->opsi_pengiriman }}</td>
                                     <td>{{ $donasi->pesan }}</td>
-                                    <td>{{ $donasi->created_at->format('d-m-Y H:i') }}</td>
+                                    <td>{{ $donasi->created_at->timezone('Asia/Jakarta')->format('d-m-Y H:i') }}</td>
                                     <td>
                                         <form action="{{ route('donasi.makanan.destroy', $donasi->id) }}" method="POST"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">

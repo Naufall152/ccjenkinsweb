@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel10-app
+    restart: always
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel-net
+
+  nginx:
+    image: nginx:latest
+    container_name: laravel10-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - laravel-net
+
+  db:
+    image: mysql:8
+    container_name: laravel10-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel10
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    ports:
+      - "3307:3306"
+    networks:
+      - laravel-net
+
+networks:
+  laravel-net:
+    driver: bridge
