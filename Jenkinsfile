@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    IMAGE_NAME = 'usernamekamu/laravel10-app'
+    IMAGE_NAME = 'naufal354/kelompok2paw'
     REGISTRY_CREDENTIALS = 'dockerhub-credentials'
   }
 
